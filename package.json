@@ -5,12 +5,16 @@
     "node": "22.12.0"
   },
   "scripts": {
-    "dev": "astro dev",
+    "dev": "cross-env CF_PAGES_BRANCH=dev astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "astro": "^5.0.9"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "cross-env": "^7.0.3"
   }
 }

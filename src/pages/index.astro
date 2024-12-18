@@ -1,11 +1,39 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const branch = process.env.CF_PAGES_BRANCH || '';
+const apiUrl = process.env.PUBLIC_API_URL || '';
+const response = await fetch(apiUrl);
+const data = await response.json();
 ---
 
 <Layout>
-	<Welcome />
+	<table>
+		<tbody>
+			<tr>
+				<th>環境名（main, staging, dev）</th>
+				<td>{branch}</td>
+			</tr>
+			<tr>
+				<th>API URL</th>
+				<td>{apiUrl}</td>
+			</tr>
+			<tr>
+				<th>投稿（userId）</th>
+				<td>{data.userId}</td>
+			</tr>
+			<tr>
+				<th>投稿（id）</th>
+				<td>{data.id}</td>
+			</tr>
+			<tr>
+				<th>投稿（title）</th>
+				<td>{data.title}</td>
+			</tr>
+			<tr>
+				<th>投稿（body）</th>
+				<td>{data.body}</td>
+			</tr>
+		</tbody>
+	</table>
 </Layout>
