@@ -1,0 +1,16 @@
+{
+  "name": "test-cloudflare-pages",
+  "type": "module",
+  "volta": {
+    "node": "22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^5.0.9"
+  }
+}
