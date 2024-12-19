@@ -8,7 +8,8 @@
     "dev": "cross-env CF_PAGES_BRANCH=dev astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "echo \"lint\""
   },
   "dependencies": {
     "astro": "^5.0.9"

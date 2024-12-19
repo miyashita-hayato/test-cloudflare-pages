@@ -1,0 +1,23 @@
+name: 特定のタスクを実行してからCloudflare Pagesにデプロイ
+
+on:
+    push:
+      branches:
+        - feature/lint
+
+jobs:
+  lint:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af
+        with:
+          node-version-file: package.json
+      - run: npm ci --prefer-offline
+      - run: npm run lint
+
+  deploy:
+    runs-on: ubuntu-22.04
+    needs: lint
+    steps:
+      - run: curl -X POST "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/9d843dc6-befa-4ece-b05d-4e204ac11f5f"
